@@ -1,0 +1,58 @@
+const products = [
+  {
+    id: 1,
+    image: "/images/monitor.jpg",
+    name: "IPS LCD Gaming Monitor",
+    category: "Monitors",
+    price: 370,
+    rating: 4.5,
+    reviews: 99,
+  },
+  {
+    id: 2,
+    image: "/images/keyboard.jpg",
+    name: "Mechanical Gaming Keyboard",
+    category: "Keyboards",
+    price: 120,
+    rating: 4.2,
+    reviews: 87,
+  },
+  {
+    id: 3,
+    image: "/images/headset.jpg",
+    name: "Wireless Gaming Headset",
+    category: "Headsets",
+    price: 95,
+    rating: 4.8,
+    reviews: 120,
+  },
+  {
+    id: 4,
+    image: "/images/mouse.jpg",
+    name: "Ergonomic Gaming Mouse",
+    category: "Mice",
+    price: 50,
+    rating: 4.3,
+    reviews: 73,
+  },
+  {
+    id: 5,
+    image: "/images/cpu-cooler.jpg",
+    name: "RGB Liquid CPU Cooler",
+    category: "Cooling Systems",
+    price: 160,
+    rating: 4.6,
+    reviews: 65,
+  },
+  {
+    id: 6,
+    image: "/images/iphone.png",
+    name: "Iphone 14",
+    category: "Cooling Systems",
+    price: 1000,
+    rating: 4.6,
+    reviews: 65,
+  },
+];
+
+export default products;
