@@ -6,7 +6,11 @@ export default function Home() {
     <div>
       <Navbar />
       <main className="container mx-auto p-6">
+<<<<<<< Updated upstream
         <h1 className="text-3xl text-red-100 font-bold mb-6">
+=======
+        <h1 className="text-3xl text-red-300 font-bold mb-6">
+>>>>>>> Stashed changes
           Electronics Store
         </h1>
 
