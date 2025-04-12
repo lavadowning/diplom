@@ -17,7 +17,10 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "next-env.d.ts",
@@ -26,6 +29,6 @@
     "**/*.tsx",
     "src/components/ui/button.jsx",
     "src/app/page.js"
-  ],
+, "src/app/products/page.js", "src/components/ui/carousel.jsx", "src/app/cart/page.js", "src/components/SlidesCarousel.jsx", "src/components/CategoriesCarousel.jsx"  ],
   "exclude": ["node_modules"]
 }

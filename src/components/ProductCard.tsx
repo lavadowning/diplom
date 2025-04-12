@@ -1,31 +1,37 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Star, StarHalf } from "lucide-react";
 
-interface ProductCardProps {
-  image: string;
-  name: string;
-  category: string;
-  price: number;
-  rating: number;
-  reviews: number;
-}
+export default function ProductCard({ product }) {
+  const {
+    id,
+    documentId,
+    name,
+    category,
+    price,
+    rating,
+    image,
+    comments = [],
+  } = product;
 
-export default function ProductCard({
-  image,
-  name,
-  category,
-  price,
-  rating,
-  reviews,
-}: ProductCardProps) {
+  const imageUrl = image?.url? `http://localhost:1337${image.url}` : "/placeholder.jpg";
+
+  // Расчёт звёзд
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 >= 0.25 && rating % 1 < 0.75;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
   return (
-    <div className="border rounded-lg p-4 shadow-sm">
-      <div className="relative w-full h-48">
+    <Link
+      href={`/${documentId}`}
+      className="min-w-[250px] border rounded-lg p-4 shadow-sm block hover:shadow-md transition"
+    >
+      <div className="relative w-full h-48 sm:h-64 md:h-48 z-0">
         <Image
-          src={image}
+          src={imageUrl}
           alt={name}
-          layout="fill"
-          objectFit="contain"
-          className="rounded"
+          fill
+          className="rounded object-contain"
         />
       </div>
 
@@ -35,23 +41,22 @@ export default function ProductCard({
 
       <p className="text-xl font-bold text-red-500">${price}</p>
 
+      {/* Рейтинг со звездами */}
       <div className="flex items-center mt-2">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <span
-            key={index}
-            className={`text-yellow-400 ${
-              index < Math.floor(rating) ? "fas fa-star" : "far fa-star"
-            }`}
-          >
-            ★
-          </span>
+        {Array.from({ length: fullStars }).map((_, i) => (
+          <Star
+            key={`full-${i}`}
+            className="w-4 h-4 fill-yellow-400 stroke-yellow-400"
+          />
         ))}
-        <span className="text-gray-600 text-sm ml-2">({reviews})</span>
+        {hasHalfStar && (
+          <StarHalf className="w-4 h-4 fill-yellow-400 stroke-yellow-400" />
+        )}
+        {Array.from({ length: emptyStars }).map((_, i) => (
+          <Star key={`empty-${i}`} className="w-4 h-4 text-gray-300" />
+        ))}
+        <span className="text-black text-xs ml-2">({rating})</span>
       </div>
-
-      <button className="mt-4 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition">
-        Buy Now
-      </button>
-    </div>
+    </Link>
   );
 }
